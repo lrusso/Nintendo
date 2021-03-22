@@ -18,10 +18,6 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Pause and Resume automatically if the window is focused or not.
 * The Web version is a Progressive Web App compatible with Android and iOS devices.
 
-## Roadmap
-
-* Remove clipping: The PPU.js file has a ScrollWrite function that implements a 7px clipping.
-
 ## Virtual joystick code:
 
 https://github.com/lrusso/VirtualJoystick
