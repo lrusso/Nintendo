@@ -10,17 +10,15 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 
 ## Main differences with JSNES
 
-* Sound button.
-* Restart button.
+* Mute/unmute audio.
 * Audio working in Safari.
-* Load and save state features working.
 * Mobile compatibility (virtual joystick and buttons).
-* Pause and Resume automatically if the window is focused or not.
-* The Web version is a Progressive Web App compatible with Android and iOS devices.
+* Pauses and resumes the game if the window is on focus or not.
+* Progressive Web App compatible with Android and iOS devices.
 
 ## Virtual joystick code:
 
-https://github.com/lrusso/VirtualJoystick
+https://github.com/lrusso/VirtualJoystick2
 
 ## Based on the work of:
 
