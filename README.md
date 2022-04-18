@@ -10,8 +10,8 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 
 ## Main differences with JSNES
 
-* Mute/unmute audio.
 * Audio working in Safari.
+* Be able to mute/unmute the audio.
 * Mobile compatibility (virtual joystick and buttons).
 * Pauses and resumes the game if the window is on focus or not.
 * Progressive Web App compatible with Android and iOS devices.
