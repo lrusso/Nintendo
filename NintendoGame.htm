@@ -65,6 +65,7 @@
 			var userLanguage = window.navigator.userLanguage || window.navigator.language;
 
 			var STRING_SOUND = "";
+			var STRING_BACK = "";
 			var STRING_MENU = "";
 			var STRING_ERROR_TITLE = "MENSAJE";
 			var STRING_ERROR_MESSAGE = "Por favor verifique que el juego se encuentre en<br />formato NES, SMC, SFC, SRM, GB, GBC,<br />GBA, BIN, SMD, MD o ZIP.";
@@ -74,6 +75,7 @@
 			if (userLanguage.substring(0,2)=="es")
 				{
 				STRING_SOUND = "SONIDO";
+				STRING_BACK = "ATR&Aacute;S"
 				STRING_MENU = "MEN&Uacute;";
 				STRING_ERROR_TITLE = "MENSAJE";
 				STRING_ERROR_MESSAGE = "Por favor verifique que el juego<br />se encuentre en formato NES.";
@@ -82,6 +84,7 @@
 				else
 				{
 				STRING_SOUND = "SOUND";
+				STRING_BACK = "BACK";
 				STRING_MENU = "MENU";
 				STRING_ERROR_TITLE = "MESSAGE";
 				STRING_ERROR_MESSAGE = "Please check that the game<br/>file is in NES format.";
@@ -96,13 +99,13 @@
 		<div class="gui_keys_wrapper">
 			<div class="gui_keys_centered">
 				<div class="gui_keys_text">
-					START = S<br/>SELECT = A<br/>B, A = Z, X<br/><script>document.write(STRING_SOUND);</script> = T<br/><script>document.write(STRING_MENU);</script> = ESC
+					START = S<br/>SELECT = A<br/>B, A = Z, X<br/><script>document.write(STRING_SOUND)</script> = T<br/><script>document.write(STRING_MENU)</script> = ESC
 				</div>
 			</div>
 		</div>
 		<div class="gui_upload" oncontextmenu="return false;"></div>
-		<div class="gui_nintendo_back" oncontextmenu="return false;">BACK</div>
-		<div class="gui_nintendo_keysound" oncontextmenu="return false;">SOUND</div>
+		<div class="gui_nintendo_back" oncontextmenu="return false;"><script>document.write(STRING_BACK)</script></div>
+		<div class="gui_nintendo_keysound" oncontextmenu="return false;"><script>document.write(STRING_SOUND)</script></div>
 		<div class="gui_nintendo_keyselect" oncontextmenu="return false;">SELECT</div>
 		<div class="gui_nintendo_keystart" oncontextmenu="return false;">START</div>
 		<div class="gui_nintendo_keyb" oncontextmenu="return false;">B</div>
