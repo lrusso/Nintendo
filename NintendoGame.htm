@@ -21,8 +21,7 @@
 			.gui_nintendo_keysound{display:none;position:fixed;right:202px;top:10px;width:86px;height:43px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:15px;line-height:3.1;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:95}
 			.gui_nintendo_keyselect{display:none;position:fixed;right:106px;top:10px;width:86px;height:43px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:15px;line-height:3.1;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:95}
 			.gui_nintendo_keystart{display:none;position:fixed;right:10px;top:10px;width:86px;height:43px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:15px;line-height:3.1;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:96}
-			.gui_joystick_wrapper{display:flex;position:fixed;bottom:0;left:0;width:200px;height:200px;justify-content:center;align-items:center;z-index:99999}
-			.gui_joystick{display:none;height:100px;width:100px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);border-radius:100%;-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+			.gui_joystick{display:none;position:fixed;left:0;bottom:0;width:200;height:200px;z-index:90;opacity:0}
 			.gui_nintendo_keyb{display:none;position:fixed;right:105px;bottom:10px;width:86px;height:86px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:50px;line-height:1.8;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:98}
 			.gui_nintendo_keya{display:none;position:fixed;right:10px;bottom:10px;width:86px;height:86px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:50px;line-height:1.8;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:97}
 
@@ -37,6 +36,7 @@
 			/* Smartphones (portrait and landscape)(small) */
 			@media screen and (min-width: 601px) and (max-width: 830px)
 				{
+				.gui_joystick{display:none;position:fixed;left:0;bottom:0;width:190px;height:220px;z-index:90}
 				.gui_nintendo_keyb{display:none;position:fixed;right:90px;bottom:10px;width:63px;height:63px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:50px;line-height:1.32;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:98}
 				.gui_nintendo_keya{display:none;position:fixed;right:10px;bottom:10px;width:63px;height:63px;background-color:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);font-family:Arial;font-size:50px;line-height:1.32;color:rgba(255,255,255,0.3);text-align:center;border-radius:50px;cursor:default;z-index:97}
 				}
@@ -111,7 +111,7 @@
 		<div class="gui_nintendo_keystart" oncontextmenu="return false;">START</div>
 		<div class="gui_nintendo_keyb" oncontextmenu="return false;">B</div>
 		<div class="gui_nintendo_keya" oncontextmenu="return false;">A</div>
-		<div class="gui_joystick_wrapper"></div>
+		<div class="gui_joystick" id="joyDiv"></div>
 		<canvas class="gui_canvas" id="nes-canvas" width="256" height="240"></canvas>
 		<input type="file" class="gui_upload_file" onchange="runEmulator(event.target.files);"/>
 		<script src="NintendoGame.js"></script>
