@@ -18,7 +18,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 
 ## Virtual joystick code:
 
-https://github.com/lrusso/VirtualJoystick2
+https://github.com/lrusso/VirtualJoystick
 
 ## Based on the work of:
 
