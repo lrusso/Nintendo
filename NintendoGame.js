@@ -504,7 +504,7 @@ window.addEventListener("load", function()
 				}
 			},250);
 
-		// SETTING WHAT WILL HAPPEN WHEN THE USER TOUCH THE MOBILE BUTTONS
+		// SETTING WHAT WILL HAPPEN WHEN THE USER TOUCHES THE MOBILE BUTTONS
 		document.getElementsByClassName("gui_nintendo_back")[0].addEventListener("touchstart",function(event){backToMenu()});
 		document.getElementsByClassName("gui_nintendo_keysound")[0].addEventListener("touchstart",function(event){toggleSound()});
 		document.getElementsByClassName("gui_nintendo_keyselect")[0].addEventListener("touchstart",function(event){try{nes.buttonDown(1,jsnes.Controller.BUTTON_SELECT)}catch(err){}});
