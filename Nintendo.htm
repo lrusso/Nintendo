@@ -70,33 +70,37 @@
 
 			window.addEventListener("load", function()
 				{
-				// RESIZING THE IFRAME
-				resizeContent();
-
-				// TO KEEP FOCUSING AND RESIZING THE IFRAME (WORKAROUND FOR IOS DEVICES)
-				setInterval(function()
+				// CHECKING IF THE NINTENDO EMULATOR IS NOT RUNNING WITHIN AN IFRAME
+				if (window.top == window.self)
 					{
+					// RESIZING THE IFRAME
 					resizeContent();
-					document.getElementById("content").focus();
-					}, 250);
 
-				// LOADING THE GAME
-				document.getElementById("content").src = "NintendoGame.htm";
-
-				// CHECKING THE IFRAME IS LOADED
-				document.getElementById("content").addEventListener("load", function()
-					{
-					// IN SOME OLDER/SLOWER DEVICES IS NECESSARY TO WAIT A MOMENT
-					// IN ORDER TO THE BACKGROUND TO BE RENDERED.
-					setTimeout(function()
+					// TO KEEP FOCUSING AND RESIZING THE IFRAME (WORKAROUND FOR IOS DEVICES)
+					setInterval(function()
 						{
-						// HIDING THE LOADING ICON
-						document.getElementById("loading").style.display = "none";
+						resizeContent();
+						document.getElementById("content").focus();
+						}, 250);
+
+					// LOADING THE GAME
+					document.getElementById("content").src = "NintendoGame.htm";
+
+					// CHECKING THE IFRAME IS LOADED
+					document.getElementById("content").addEventListener("load", function()
+						{
+						// IN SOME OLDER/SLOWER DEVICES IS NECESSARY TO WAIT A MOMENT
+						// IN ORDER TO THE BACKGROUND TO BE RENDERED.
+						setTimeout(function()
+							{
+							// HIDING THE LOADING ICON
+							document.getElementById("loading").style.display = "none";
 
 						// SHOWING THE IFRAME
-						document.getElementById("content").style.display = "block";
-						}, 200);
-					});
+							document.getElementById("content").style.display = "block";
+							}, 200);
+						});
+					}
 				});
 
 			window.addEventListener("resize", function()
