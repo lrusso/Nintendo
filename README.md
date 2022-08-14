@@ -16,7 +16,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Pauses and resumes the game if the window is on focus or not.
 * Progressive Web App compatible with Android and iOS devices.
 
-# This Nintendo emulator has mobile compatibility
+# This emulator has mobile compatibility
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/Nintendo/master/Nintendo2.png)
 
