@@ -2,7 +2,7 @@
 
 Nintendo Emulator developed in JavaScript.
 
-![alt screenshot](https://raw.githubusercontent.com/lrusso/Nintendo/master/Nintendo.png)
+![alt screenshot](https://raw.githubusercontent.com/lrusso/Nintendo/master/Nintendo1.png)
 
 ## Web
 
