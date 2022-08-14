@@ -85,22 +85,22 @@
 
 					// LOADING THE GAME
 					document.getElementById("content").src = "NintendoGame.htm";
-
-					// CHECKING THE IFRAME IS LOADED
-					document.getElementById("content").addEventListener("load", function()
-						{
-						// IN SOME OLDER/SLOWER DEVICES IS NECESSARY TO WAIT A MOMENT
-						// IN ORDER TO THE BACKGROUND TO BE RENDERED.
-						setTimeout(function()
-							{
-							// HIDING THE LOADING ICON
-							document.getElementById("loading").style.display = "none";
-
-						// SHOWING THE IFRAME
-							document.getElementById("content").style.display = "block";
-							}, 200);
-						});
 					}
+				});
+
+			// CHECKING THE IFRAME IS LOADED
+			document.getElementById("content").addEventListener("load", function()
+				{
+				// IN SOME OLDER/SLOWER DEVICES IS NECESSARY TO WAIT A MOMENT
+				// IN ORDER TO THE BACKGROUND TO BE RENDERED.
+				setTimeout(function()
+					{
+					// HIDING THE LOADING ICON
+					document.getElementById("loading").style.display = "none";
+
+					// SHOWING THE IFRAME
+					document.getElementById("content").style.display = "block";
+					}, 200);
 				});
 
 			window.addEventListener("resize", function()
