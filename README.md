@@ -4,11 +4,11 @@ Nintendo Emulator developed in JavaScript.
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/Nintendo/master/Nintendo1.png)
 
-## Web
+## Web:
 
 https://lrusso.github.io/Nintendo/Nintendo.htm
 
-## Main differences with JSNES
+## Main differences with JSNES:
 
 * Audio working in Safari.
 * Be able to mute/unmute the game audio.
