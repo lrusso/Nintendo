@@ -13,7 +13,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Audio working in Safari.
 * Be able to mute/unmute the game audio.
 * Mobile compatibility (virtual joystick and buttons).
-* Pauses and resumes the game if the window is on focus or not.
+* Pausing and resuming the game if the window is on focus or not.
 * Progressive Web App compatible with Android and iOS devices.
 
 ## This emulator has mobile compatibility
