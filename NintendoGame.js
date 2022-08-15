@@ -389,7 +389,7 @@ function getBooleanSetting(settingName)
 	{
 	try
 		{
-		var name = "nintendo2" + settingName;
+		var name = "nintendo" + settingName;
 		var nameEQ = name + "=";
 		var ca = document.cookie.split(";");
 
@@ -424,7 +424,7 @@ function setBooleanSetting(settingName, settingValue)
 	{
 	try
 		{
-		var name = "nintendo2" + settingName;
+		var name = "nintendo" + settingName;
 		var value = String(settingValue);
 		var days = 999;
 		var expires = "";
