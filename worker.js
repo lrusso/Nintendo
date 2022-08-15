@@ -1,7 +1,8 @@
 const filesToCache = [
 	"Nintendo.htm",
 	"Nintendo.json",
-	"Nintendo.png",
+	"Nintendo1.png",
+	"Nintendo2.png",
 	"NintendoFavIcon_16x16.png",
 	"NintendoFavIcon_192x192.png",
 	"NintendoFavIcon_512x512.png",
