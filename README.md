@@ -11,9 +11,11 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 ## Main differences with JSNES:
 
 * Mapper 4 fixed.
+* Mappers 240 and 241 added.
 * Audio working in Safari.
 * Be able to mute/unmute the game audio.
 * Mobile compatibility (virtual joystick and buttons).
+* Minor accuracy fixes pertaining to audio & rendering.
 * Pausing and resuming the game if the window is on focus or not.
 * Progressive Web App compatible with Android and iOS devices.
 
