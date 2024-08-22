@@ -15,7 +15,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Audio working in Safari.
 * Be able to mute/unmute the game audio.
 * Mobile compatibility (virtual joystick and buttons).
-* Minor accuracy fixes pertaining to audio & rendering.
+* Minor accuracy fixes pertaining to audio and rendering.
 * Pausing and resuming the game if the window is on focus or not.
 * Progressive Web App compatible with Android and iOS devices.
 
