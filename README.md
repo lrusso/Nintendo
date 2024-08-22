@@ -30,3 +30,7 @@ https://github.com/lrusso/VirtualJoystick
 ## Based on the work of:
 
 https://github.com/bfirsh/jsnes
+
+## Modified source code at:
+
+https://github.com/lrusso/jsnes
