@@ -10,6 +10,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 
 ## Main differences with JSNES:
 
+* Mapper 4 fixed.
 * Audio working in Safari.
 * Be able to mute/unmute the game audio.
 * Mobile compatibility (virtual joystick and buttons).
