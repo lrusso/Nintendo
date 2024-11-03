@@ -13,6 +13,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Mapper 4 fixed.
 * Mappers 240 and 241 added.
 * Audio working in Safari.
+* Be able to reset the game.
 * Be able to mute/unmute the game audio.
 * Mobile compatibility (virtual joystick and buttons).
 * Minor accuracy fixes pertaining to audio and rendering.
