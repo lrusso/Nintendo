@@ -325,7 +325,7 @@ function runEmulator(files)
 				document.getElementsByClassName("gui_canvas")[0].style.display = "block";
 
 				// CHECKING IF IT IS A MOBILE DEVICE
-				if (!mobileDevice==true)
+				if (mobileDevice==true)
 					{
 					// SHOWING THE JOYSTICK AND BUTTONS
 					document.getElementsByClassName("gui_nintendo_back")[0].style.display = "block";
