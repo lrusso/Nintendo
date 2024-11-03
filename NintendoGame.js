@@ -275,6 +275,7 @@ function backToMenu()
 		{
 		// HIDING THE JOYSTICK AND BUTTONS
 		document.getElementsByClassName("gui_nintendo_back")[0].style.display = "none";
+		document.getElementsByClassName("gui_nintendo_keyreset")[0].style.display = "none";
 		document.getElementsByClassName("gui_nintendo_keysound")[0].style.display = "none";
 		document.getElementsByClassName("gui_nintendo_keyselect")[0].style.display = "none";
 		document.getElementsByClassName("gui_nintendo_keystart")[0].style.display = "none";
