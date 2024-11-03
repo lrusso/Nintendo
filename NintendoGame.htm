@@ -85,6 +85,7 @@
 		<script>
 			var userLanguage = window.navigator.userLanguage || window.navigator.language;
 
+			var STRING_RESET = "";
 			var STRING_SOUND = "";
 			var STRING_BACK = "";
 			var STRING_MENU = "";
@@ -95,6 +96,7 @@
 			// CHECKING THE USER LANGUAGE
 			if (userLanguage.substring(0,2)=="es")
 				{
+				STRING_RESET = "RESET";
 				STRING_SOUND = "SONIDO";
 				STRING_BACK = "ATR&Aacute;S"
 				STRING_MENU = "MEN&Uacute;";
@@ -104,6 +106,7 @@
 				}
 				else
 				{
+				STRING_RESET = "RESET";
 				STRING_SOUND = "SOUND";
 				STRING_BACK = "BACK";
 				STRING_MENU = "MENU";
@@ -122,7 +125,7 @@
 			<div class="gui_keys_wrapper">
 				<div class="gui_keys_centered">
 					<div class="gui_keys_text">
-						START = S<br>SELECT = A<br>B, A = Z, X<br><script>document.write(STRING_SOUND);</script> = T<br><script>document.write(STRING_MENU);</script> = ESC
+						START = S<br>SELECT = A<br>B, A = Z, X<br><script>document.write(STRING_RESET);</script> = R<br><script>document.write(STRING_SOUND);</script> = T<br><script>document.write(STRING_MENU);</script> = ESC
 					</div>
 				</div>
 			</div>

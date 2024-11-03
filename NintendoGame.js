@@ -241,6 +241,8 @@ function handleKeys(callback, event)
 			callback(1, jsnes.Controller.BUTTON_B); break;
 		case 65: // A
 			callback(1, jsnes.Controller.BUTTON_SELECT); break;
+		case 82: // R
+			nes.reloadROM(); break;
 		case 83: // S
 			callback(1, jsnes.Controller.BUTTON_START); break;
 		case 84: // T
