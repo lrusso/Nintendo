@@ -325,10 +325,11 @@ function runEmulator(files)
 				document.getElementsByClassName("gui_canvas")[0].style.display = "block";
 
 				// CHECKING IF IT IS A MOBILE DEVICE
-				if (mobileDevice==true)
+				if (!mobileDevice==true)
 					{
 					// SHOWING THE JOYSTICK AND BUTTONS
 					document.getElementsByClassName("gui_nintendo_back")[0].style.display = "block";
+					document.getElementsByClassName("gui_nintendo_keyreset")[0].style.display = "block";
 					document.getElementsByClassName("gui_nintendo_keysound")[0].style.display = "block";
 					document.getElementsByClassName("gui_nintendo_keyselect")[0].style.display = "block";
 					document.getElementsByClassName("gui_nintendo_keystart")[0].style.display = "block";
@@ -517,6 +518,7 @@ window.addEventListener("load", function()
 
 		// SETTING WHAT WILL HAPPEN WHEN THE USER TOUCHES THE MOBILE BUTTONS
 		document.getElementsByClassName("gui_nintendo_back")[0].addEventListener("touchstart",function(event){backToMenu()});
+		document.getElementsByClassName("gui_nintendo_keyreset")[0].addEventListener("touchstart",function(event){try{nes.reloadROM()}catch(err){}});
 		document.getElementsByClassName("gui_nintendo_keysound")[0].addEventListener("touchstart",function(event){toggleSound()});
 		document.getElementsByClassName("gui_nintendo_keyselect")[0].addEventListener("touchstart",function(event){try{nes.buttonDown(1,jsnes.Controller.BUTTON_SELECT)}catch(err){}});
 		document.getElementsByClassName("gui_nintendo_keyselect")[0].addEventListener("touchend",function(event){try{nes.buttonUp(1,jsnes.Controller.BUTTON_SELECT)}catch(err){}});
