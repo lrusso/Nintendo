@@ -289,6 +289,9 @@ function backToMenu()
 	document.getElementsByClassName("gui_upload")[0].style.display = "block";
 	document.getElementsByClassName("gui_canvas")[0].style.display = "none";
 
+	// SHOWING THE MOUSE CURSOR
+	document.getElementsByTagName("body")[0].className = "gui_mouse_visible";
+
 	// GETTING THE SOUND ENABLED STATUS
 	var originalState = SOUND_ENABLED;
 
@@ -368,6 +371,9 @@ function runEmulator(files)
 
 				// BOOTING THE ROM
 				nes_boot(ROMDATA);
+
+				// HIDING THE MOUSE CURSOR
+				document.getElementsByTagName("body")[0].className = "gui_mouse_hidden";
 				}
 				else
 				{
