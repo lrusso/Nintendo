@@ -26,7 +26,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 
 ```diff
 // Load swappable PRG banks (0x8000 and 0xA000):
-- this.load8kRomBank(0, 0x8000);~~
+- this.load8kRomBank(0, 0x8000);
 - this.load8kRomBank(1, 0xa000);
 + this.load8kRomBank((this.nes.rom.romCount - 1) * 2, 0x8000);
 + this.load8kRomBank((this.nes.rom.romCount - 1) * 2, 0xa000);
@@ -43,7 +43,3 @@ https://github.com/lrusso/VirtualJoystick
 ## Based on the work of:
 
 https://github.com/bfirsh/jsnes
-
-## Modified source code at:
-
-https://github.com/lrusso/jsnes
