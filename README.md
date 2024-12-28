@@ -20,6 +20,18 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Pausing and resuming the game if the window is on focus or not.
 * Progressive Web App compatible with Android and iOS devices.
 
+## How did I fix the mapper 4?
+
+- Open the ```src/mappers.js``` file and modify the following:
+
+```diff
+// Load swappable PRG banks (0x8000 and 0xA000):
+- this.load8kRomBank(0, 0x8000);~~
+- this.load8kRomBank(1, 0xa000);
++ this.load8kRomBank((this.nes.rom.romCount - 1) * 2, 0x8000);
++ this.load8kRomBank((this.nes.rom.romCount - 1) * 2, 0xa000);
+```
+
 ## This emulator has mobile compatibility
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/Nintendo/master/Nintendo2.png)
