@@ -36,6 +36,10 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/Nintendo/master/Nintendo2.png)
 
+## Title generator:
+
+https://lrusso.github.io/Nintendo/NintendoTitle.htm
+
 ## Virtual joystick code:
 
 https://github.com/lrusso/VirtualJoystick
