@@ -19,7 +19,7 @@ https://lrusso.github.io/Nintendo/Nintendo.htm
 * Fixing support for Mapper 4 ([bfirsh/jsnes#452](https://github.com/bfirsh/jsnes/pull/452/commits/850b69a6b6d96b783caf736310471b4eee971a50)).
 * Adding support for Mapper 240 (https://github.com/bfirsh/jsnes/pull/441).
 * Adding support for Mapper 241 (https://github.com/bfirsh/jsnes/pull/438).
-* Improve frame loop performance by 15-20% (https://github.com/bfirsh/jsnes/pull/436).
+* Improving frame loop performance by 15-20% (https://github.com/bfirsh/jsnes/pull/436).
 * Minor accuracy fixes pertaining to audio and rendering (https://github.com/bfirsh/jsnes/pull/425).
 
 ## This emulator has mobile compatibility
