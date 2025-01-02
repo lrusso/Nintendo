@@ -25,6 +25,7 @@ document.addEventListener("touchstart",fixAudioContext);
 
 var GAME_PAUSED = false;
 var SOUND_ENABLED = true;
+var mouseTimer = null;
 
 var mobileDevice = isMobileDevice();
 
@@ -371,9 +372,6 @@ function runEmulator(files)
 
 				// BOOTING THE ROM
 				nes_boot(ROMDATA);
-
-				// HIDING THE MOUSE CURSOR
-				document.getElementsByTagName("body")[0].className = "gui_mouse_hidden";
 				}
 				else
 				{
@@ -503,6 +501,31 @@ window.addEventListener("load", function()
 
 	// SHOWING THE EMULATOR GUI
 	document.getElementsByClassName("container")[0].style.display = "block";
+
+	// LISTENING THE MOUSE MOVE EVENT
+	document.getElementsByTagName("body")[0].addEventListener("mousemove", function()
+		{
+		// CHECKING IF THERE IS A PENDING TIMEOUT
+		if (mouseTimer != null)
+			{
+			// CLEARING THE TIMEOUT
+			clearTimeout(mouseTimer)
+			}
+
+		// SHOWING THE MOUSE CURSOR
+		document.getElementsByTagName("body")[0].className = "gui_mouse_visible";
+
+		// CHECKING IF THERE IS A GAME IN PROGRESS
+		if (document.getElementsByClassName("gui_title")[0].style.display == "none")
+			{
+			// HIDING THE MOUSE CURSOR IN 3 SECONDS
+			mouseTimer = setTimeout(function()
+				{
+				// HIDING THE MOUSE CURSOR
+				document.getElementsByTagName("body")[0].className = "gui_mouse_hidden";
+				}, 3000);
+			}
+		})
 
 	// CHECKING IF IT IS A MOBILE DEVICE
 	if (mobileDevice==true)
