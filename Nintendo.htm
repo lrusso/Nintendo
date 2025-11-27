@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Nintendo</title>
+    <link
+      rel="icon"
+      sizes="16x16"
+      type="rom/png"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAMFJREFUOMuNU7ERwyAMfHwuMkbK7JEZvINKSo+QMiU7MIP3oMwY7kjBcRbiIfkGIfHSW5IdCBKQre8BOPbW/UOeJVttMMhlv57l3I9i37a+4KIvXpArqZ4aZ0Q+Y6twGcncj1aJvuskzipg1TUZAN7h4tHOWpkatg9dgqpCQttQXVVjZWQLCQBUjH6CJUsYj5cqqiPygpxQ7ITW9lJsOgXt/Gy8gffYN7PbgxF5FJv+C3XnmW+6SKxJo9jya4QM+u0XJpBeIC+uAZgAAAAASUVORK5CYII="
+    >
+    <meta name="theme-color" content="#000">
+    <meta name="description" content="JavaScript Nintendo Emulator.">
+    <meta name="keywords" content="javascript, nintendo, emulator">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    >
+    <style>
+      html,body{padding:0;margin:0;overscroll-behavior:none;background-color:#000}
+
+      #container{display:none}
+      input[type=file]{display:none}
+      #email{position:fixed;right:0;bottom:0;padding-right:15px;line-height:3.2;font-family:Arial;font-size:16px;color:#fff;user-select:none;-webkit-user-select:none}
+      #email a{text-decoration:none;color:#fff}
+      #demo-loader{display:none;position:fixed;left:0;bottom:0;right:0;top:0;width:20vw;height:20vw;margin:auto auto;cursor:pointer}
+      #demo-loader:hover{filter:brightness(110%)}
+      #file-selector{display:none;position:fixed;left:0;bottom:0;right:0;top:0;width:20vw;height:20vw;margin:auto auto;cursor:pointer}
+      #file-selector:hover{filter:brightness(110%)}
+
+      #game{width:100vw;height:100vh}
+
+      .pleasewait{position:fixed;width:64px;height:64px;left:0;right:0;top:0;bottom:0;margin:auto auto;border:0}
+      .lds-spinner{color:#fff;display:inline-block;position:relative;width:64px;height:64px}
+      .lds-spinner div{transform-origin:32px 32px;animation:lds-spinner 1.2s linear infinite}
+      .lds-spinner div:after{content:" ";display:block;position:absolute;top:3px;left:29px;width:5px;height:14px;border-radius:20%;background:#fff}
+      .lds-spinner div:nth-child(1){transform:rotate(0deg);animation-delay:-1.1s}
+      .lds-spinner div:nth-child(2){transform:rotate(30deg);animation-delay:-1s}
+      .lds-spinner div:nth-child(3){transform:rotate(60deg);animation-delay:-.9s}
+      .lds-spinner div:nth-child(4){transform:rotate(90deg);animation-delay:-.8s}
+      .lds-spinner div:nth-child(5){transform:rotate(120deg);animation-delay:-.7s}
+      .lds-spinner div:nth-child(6){transform:rotate(150deg);animation-delay:-.6s}
+      .lds-spinner div:nth-child(7){transform:rotate(180deg);animation-delay:-.5s}
+      .lds-spinner div:nth-child(8){transform:rotate(210deg);animation-delay:-.4s}
+      .lds-spinner div:nth-child(9){transform:rotate(240deg);animation-delay:-.3s}
+      .lds-spinner div:nth-child(10){transform:rotate(270deg);animation-delay:-.2s}
+      .lds-spinner div:nth-child(11){transform:rotate(300deg);animation-delay:-.1s}
+      .lds-spinner div:nth-child(12){transform:rotate(330deg);animation-delay:0s}
+      @keyframes lds-spinner{0%{opacity:1}to{opacity:0}}
+    </style>
+  </head>
+  <body>
+    <div id="game"></div>
+    <div class="pleasewait">
+      <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="email"><a href="mailto:info@lrusso.com">info@lrusso.com</a></div>
+      <div id="demo-loader">
+        <svg width="100%" height="100%" viewBox="0 0 502 502">
+          <circle fill="#FFF" cx="250" cy="250" r="200" />
+          <path
+            fill="#b9180b"
+            d="M251,1C112.929,1,1,112.929,1,251s111.929,250,250,250s250-111.929,250-250S389.071,1,251,1z M164.75,366  V136l230,115L164.75,366z"
+          />
+        </svg>
+      </div>
+      <div id="file-selector">
+        <svg width="100%" height="100%" viewBox="0 0 502 502">
+          <circle fill="#FFF" cx="250" cy="250" r="200" />
+          <path
+            fill="#b9180b"
+            d="M251,1C112.929,1,1,112.929,1,251s111.929,250,250,250s250-111.929,250-250S389.071,1,251,1z   M251.283,111.853L351,236.738h-56.935v73.761H208.51v-73.761h-56.941L251.283,111.853z M208.51,336.122v-19.418h85.556v19.418  H208.51z M294.065,341.665v10.186H208.51v-10.186H294.065z M391,380.147c0,5.522-4.477,10-10,10H121c-5.523,0-10-4.478-10-10  v-72.935c0-5.743,4.643-10.399,10.37-10.399s10.37,4.656,10.37,10.399v62.194h238.52v-62.194c0-5.743,4.643-10.399,10.37-10.399  S391,301.47,391,307.213V380.147z"
+          />
+        </svg>
+      </div>
+      <input type="file" id="romfile-input" accept=".nes">
+    </div>
+    <script src="Nintendo.min.js"></script>
+    <script>
+      var container = document.getElementById("container")
+      var demoLoader = document.getElementById("demo-loader")
+      var fileSelector = document.getElementById("file-selector")
+      var romFileInput = document.getElementById("romfile-input")
+      var pleaseWait = document.querySelector(".pleasewait")
+
+      window.addEventListener("load", function () {
+        if (window.top === window.self) {
+          container.style.display = "block"
+
+          var currentURL = new URL(window.location.href).searchParams
+          var demoRequired = currentURL.has("demo")
+
+          if (demoRequired) {
+            demoLoader.style.display = "block"
+          } else {
+            fileSelector.style.display = "block"
+          }
+
+          demoLoader.addEventListener("click", function () {
+            container.style.display = "none"
+
+            // the game url can be full or relative.
+            // if full, the emulator will get the filename from it.
+            var gameURL = "DEMO.nes"
+
+            // no fetch here because the entire project
+            // is compatible with pre 2015 environments.
+            var xhr = new XMLHttpRequest()
+            xhr.open("GET", gameURL, true)
+            xhr.responseType = "arraybuffer"
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                embedNintendo({
+                  container: "game",
+                  name: gameURL,
+                  rom: xhr.response,
+                  player1: {
+                    up: "up",
+                    down: "down",
+                    left: "left",
+                    right: "right",
+                    select: "a",
+                    start: "s",
+                    a: "x",
+                    b: "z",
+                  },
+                  player2: {
+                    up: "Num-8",
+                    down: "Num-2",
+                    left: "Num-4",
+                    right: "Num-6",
+                    select: "Num-1",
+                    start: "Num-3",
+                    a: "Num-7",
+                    b: "Num-9",
+                  },
+                  cbStarted: function () {
+                    pleaseWait.style.display = "none"
+                  },
+                })
+              }
+            }
+
+            xhr.send(null)
+          })
+
+          fileSelector.addEventListener("click", function () {
+            romFileInput.click()
+          })
+
+          romFileInput.addEventListener("change", function (event) {
+            container.style.display = "none"
+
+            if (event.target.files[0].name.toLowerCase().endsWith(".nes")) {
+              var filereader = new FileReader()
+              filereader.onload = function () {
+                embedNintendo({
+                  container: "game",
+                  name: event.target.files[0].name,
+                  rom: filereader.result,
+                  player1: {
+                    up: "up",
+                    down: "down",
+                    left: "left",
+                    right: "right",
+                    a: "x",
+                    b: "z",
+                    select: "a",
+                    start: "s",
+                  },
+                  player2: {
+                    up: "Num-8",
+                    down: "Num-2",
+                    left: "Num-4",
+                    right: "Num-6",
+                    a: "Num-7",
+                    b: "Num-9",
+                    select: "Num-1",
+                    start: "Num-3",
+                  },
+                  cbStarted: function () {
+                    pleaseWait.style.display = "none"
+                  },
+                })
+              }
+
+              filereader.readAsArrayBuffer(event.target.files[0])
+            } else {
+              window.location.reload()
+            }
+          })
+
+          document.addEventListener("keydown", function (event) {
+            var KEY_CTRL = event.ctrlKey || event.metaKey
+            var KEY_1 = event.code === "Digit1"
+            var KEY_2 = event.code === "Digit2"
+            var KEY_3 = event.code === "Digit3"
+            var KEY_F = event.code === "KeyF"
+
+            if (KEY_CTRL && KEY_1) {
+              event.preventDefault()
+              downloadStateNintendo()
+            }
+
+            if (KEY_CTRL && KEY_2) {
+              event.preventDefault()
+              uploadStateNintendo()
+            }
+
+            if (KEY_CTRL && KEY_3) {
+              event.preventDefault()
+              toggleSoundNintendo()
+            }
+
+            if (KEY_CTRL && KEY_F) {
+              event.preventDefault()
+              requestEmulatorFullscreenNintendo()
+            }
+          })
+        }
+      })
+    </script>
+  </body>
+</html>
