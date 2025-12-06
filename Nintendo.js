@@ -7381,60 +7381,170 @@
 
       // Helper function to get keyCode from key string
       function getKeyCode(key) {
+        var keyList = {
+          altleft: 18,
+          altright: 18,
+          altright: 225,
+          arrowdown: 40,
+          arrowleft: 37,
+          arrowright: 39,
+          arrowup: 38,
+          backquote: 163,
+          backquote: 192,
+          backquote: 223,
+          backquote: 229,
+          backquote: 60,
+          backslash: 164,
+          backslash: 170,
+          backslash: 220,
+          backspace: 8,
+          bracketleft: 160,
+          bracketleft: 219,
+          bracketright: 161,
+          bracketright: 171,
+          bracketright: 221,
+          capslock: 20,
+          comma: 188,
+          contextmenu: 93,
+          controlleft: 17,
+          controlright: 17,
+          digit0: 48,
+          digit1: 49,
+          digit2: 50,
+          digit3: 51,
+          digit4: 52,
+          digit5: 53,
+          digit6: 54,
+          digit7: 55,
+          digit8: 56,
+          digit9: 57,
+          "double quote": 222,
+          enter: 13,
+          equal: 187,
+          equal: 61,
+          escape: 27,
+          f1: 112,
+          f10: 121,
+          f11: 122,
+          f12: 123,
+          f13: 124,
+          f13: 44,
+          f14: 125,
+          f15: 126,
+          f16: 127,
+          f17: 128,
+          f18: 129,
+          f19: 130,
+          f2: 113,
+          f20: 131,
+          f21: 132,
+          f22: 133,
+          f23: 134,
+          f24: 135,
+          f25: 136,
+          f26: 137,
+          f27: 138,
+          f28: 139,
+          f29: 140,
+          f3: 114,
+          f30: 141,
+          f31: 142,
+          f32: 143,
+          f4: 115,
+          f5: 116,
+          f6: 117,
+          f7: 118,
+          f8: 119,
+          f9: 120,
+          intlbackslash: 192,
+          intlbackslash: 226,
+          intlro: 193,
+          keya: 65,
+          keyb: 66,
+          keyc: 67,
+          keyd: 68,
+          keye: 69,
+          keyf: 70,
+          keyg: 71,
+          keyh: 72,
+          keyi: 73,
+          keyj: 74,
+          keyk: 75,
+          keyl: 76,
+          keym: 77,
+          keyn: 78,
+          keyo: 79,
+          keyp: 80,
+          keyq: 81,
+          keyr: 82,
+          keys: 83,
+          keyt: 84,
+          keyu: 85,
+          keyv: 86,
+          keyw: 87,
+          keyx: 88,
+          keyy: 89,
+          keyz: 90,
+          lang1: 21,
+          lang2: 25,
+          mediatracknext: 176,
+          mediatrackprevious: 177,
+          metaleft: 91,
+          metaright: 92,
+          minus: 169,
+          minus: 173,
+          minus: 189,
+          minus: 63,
+          numlock: 12,
+          numlock: 144,
+          numpad0: 45,
+          numpad0: 96,
+          numpad1: 35,
+          numpad1: 97,
+          numpad2: 98,
+          numpad3: 34,
+          numpad3: 99,
+          numpad4: 100,
+          numpad5: 101,
+          numpad6: 102,
+          numpad7: 103,
+          numpad7: 36,
+          numpad8: 104,
+          numpad9: 105,
+          numpad9: 33,
+          numpadadd: 107,
+          numpadcomma: 194,
+          numpaddecimal: 108,
+          numpaddecimal: 110,
+          numpaddecimal: 46,
+          numpaddivide: 111,
+          numpadmultiply: 106,
+          numpadsubtract: 109,
+          osleft: 224,
+          pause: 19,
+          pause: 3,
+          period: 190,
+          period: 58,
+          quote: 165,
+          quote: 222,
+          scrolllock: 145,
+          semicolon: 186,
+          semicolon: 59,
+          shiftleft: 16,
+          shiftright: 16,
+          slash: 191,
+          space: 32,
+          tab: 9,
+          volumedown: 182,
+          volumemute: 181,
+          volumeup: 183,
+          wakeup: 255,
+        }
+
         var keyLower = key.toLowerCase()
 
-        // Handle arrow keys
-        if (keyLower === "up") {
-          return 38
-        }
-        if (keyLower === "down") {
-          return 40
-        }
-        if (keyLower === "left") {
-          return 37
-        }
-        if (keyLower === "right") {
-          return 39
-        }
-
-        // Handle numpad keys (Num-0 through Num-9)
-        if (keyLower.startsWith("num-")) {
-          var numKey = keyLower.replace("num-", "")
-          if (numKey === "0") {
-            return 96
-          }
-          if (numKey === "1") {
-            return 97
-          }
-          if (numKey === "2") {
-            return 98
-          }
-          if (numKey === "3") {
-            return 99
-          }
-          if (numKey === "4") {
-            return 100
-          }
-          if (numKey === "5") {
-            return 101
-          }
-          if (numKey === "6") {
-            return 102
-          }
-          if (numKey === "7") {
-            return 103
-          }
-          if (numKey === "8") {
-            return 104
-          }
-          if (numKey === "9") {
-            return 105
-          }
-        }
-
-        // Handle single character keys (a-z, 0-9, etc)
-        if (key.length === 1) {
-          return key.toUpperCase().charCodeAt(0)
+        if (keyList.hasOwnProperty(keyLower)) {
+          return keyList[keyLower]
         }
 
         return null
