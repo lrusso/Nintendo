@@ -3991,7 +3991,6 @@
       this.maxSample = -500000
       this.minSample = 500000
     },
-    // eslint-disable-next-line no-unused-vars
     readReg: function readReg(address) {
       // Read 0x4015:
       var tmp = 0
@@ -5186,7 +5185,6 @@
     getLengthStatus: function getLengthStatus() {
       return this.lengthCounter === 0 || !this.isEnabled ? 0 : 1
     },
-    // eslint-disable-next-line no-unused-vars
     readReg: function readReg(address) {
       return 0
     },
@@ -5880,7 +5878,6 @@
     clockIrqCounter: function clockIrqCounter() {
       // Does nothing. This is used by the MMC3 mapper.
     },
-    // eslint-disable-next-line no-unused-vars
     latchAccess: function latchAccess(address) {
       // Does nothing. This is used by MMC2.
     },
@@ -6106,7 +6103,6 @@
     this.nes.cpu.requestIrq(this.nes.cpu.IRQ_RESET)
   }
 
-  // eslint-disable-next-line no-unused-vars
   Mappers[1].prototype.switchLowHighPrgRom = function (oldSetting) {
     // not yet.
   }
@@ -7669,7 +7665,7 @@
 
       // CREATING A NEW JSNES INSTANCE
       globals.window["NINTENDO"] = new NES({
-        onFrame: function (framebuffer_24) {
+        onFrame: function onFrame(framebuffer_24) {
           var destIndex = 0
           for (var i = 256 * 8; i < 256 * 232; i++) {
             // Skip first 2048 pixels (8 lines) and last 8 lines
@@ -7677,7 +7673,7 @@
               0xff000000 | framebuffer_24[i]
           }
         },
-        onAudioSample: function (l, r) {
+        onAudioSample: function onAudioSample(l, r) {
           globals.window["NINTENDO_AUDIO_SAMPLES_L"][
             globals.window["NINTENDO_AUDIO_WRITE_CURSOR"]
           ] = l
