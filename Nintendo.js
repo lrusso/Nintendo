@@ -1479,8 +1479,14 @@ var JoyStick = function JoyStick(t, e) {var i = void 0 === (e = e || {}).title ?
             var data = new Uint8Array(e.target.result)
             var bufPtr = Module._malloc(data.length)
             Module.HEAPU8.set(data, bufPtr)
-            Module._retro_unserialize(bufPtr, data.length)
+            var ok = Module._retro_unserialize(bufPtr, data.length)
             Module._free(bufPtr)
+
+            // the core rejected the state: leave the emulator untouched
+            // rather than resetting audio for a load that never happened.
+            if (!ok) {
+              return
+            }
 
             // Reset audio timing to avoid crackling after state load
             globals.window["NINTENDO_AUDIO_NEXT_TIME"] = 0
