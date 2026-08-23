@@ -93,6 +93,7 @@ var JoyStick = function JoyStick(t, e) {var i = void 0 === (e = e || {}).title ?
   globals.window["NINTENDO_PAUSED"] = false
   globals.window["NINTENDO_MUTED"] = false
   globals.window["NINTENDO_ANIMATION_FRAME_ID"] = null
+  globals.window["NINTENDO_STATE_INPUT"] = null
 
   // Video state
   globals.window["NINTENDO_VIDEO_WIDTH"] = 256
@@ -1435,9 +1436,29 @@ var JoyStick = function JoyStick(t, e) {var i = void 0 === (e = e || {}).title ?
         return
       }
 
+      // drop the input used by the previous call, if the picker was cancelled
+      // it is still hanging around in the DOM.
+      if (
+        globals.window["NINTENDO_STATE_INPUT"] &&
+        globals.window["NINTENDO_STATE_INPUT"].parentNode
+      ) {
+        globals.window["NINTENDO_STATE_INPUT"].parentNode.removeChild(
+          globals.window["NINTENDO_STATE_INPUT"]
+        )
+      }
+      globals.window["NINTENDO_STATE_INPUT"] = null
+
       var input = globals.document.createElement("input")
       input.type = "file"
       input.accept = ".state"
+      input.style.display = "none"
+
+      // the input must stay in the DOM while the native file picker is open.
+      // on ios safari a detached input (and its change listener) can be
+      // garbage collected while the page sits in the background behind the
+      // picker, and then the change event never fires.
+      document.getElementsByTagName("body")[0].appendChild(input)
+      globals.window["NINTENDO_STATE_INPUT"] = input
 
       input.addEventListener("change", function (event) {
         var file = event.target.files[0]
