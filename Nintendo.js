@@ -622,9 +622,17 @@ var JoyStick = function JoyStick(t, e) {var i = void 0 === (e = e || {}).title ?
     if (elapsed < globals.window["NINTENDO_FRAME_INTERVAL"] - 1) {
       return
     }
-    globals.window["NINTENDO_LAST_FRAME_TIME"] =
-      globals.window["NINTENDO_LAST_FRAME_TIME"] +
-      globals.window["NINTENDO_FRAME_INTERVAL"]
+    // after a stall (file picker, app switch, gc pause) the accumulated debt
+    // would be repaid one frame per rAF callback, which is double speed on a
+    // 120hz display. drop it when more than 3 frames of debt would be
+    // left after this one, matching the cap MAME already uses.
+    if (elapsed - globals.window["NINTENDO_FRAME_INTERVAL"] > globals.window["NINTENDO_FRAME_INTERVAL"] * 3) {
+      globals.window["NINTENDO_LAST_FRAME_TIME"] = timestamp
+    } else {
+      globals.window["NINTENDO_LAST_FRAME_TIME"] =
+        globals.window["NINTENDO_LAST_FRAME_TIME"] +
+        globals.window["NINTENDO_FRAME_INTERVAL"]
+    }
 
     Module._retro_run()
 
