@@ -945,9 +945,16 @@ var JoyStick = function JoyStick(t, e) {var i = void 0 === (e = e || {}).title ?
       })
 
       window.addEventListener("focus", function () {
+        if (!globals.window["NINTENDO_RUNNING"]) {
+          return
+        }
+
+        // Not gated on the pause flag alone: ios can fire a spurious focus
+        // that clears it while the emulator is still in the background, so a
+        // dead loop also counts as needing a resume.
         if (
-          !globals.window["NINTENDO_RUNNING"] ||
-          !globals.window["NINTENDO_PAUSED"]
+          !globals.window["NINTENDO_PAUSED"] &&
+          globals.window["NINTENDO_ANIMATION_FRAME_ID"]
         ) {
           return
         }
