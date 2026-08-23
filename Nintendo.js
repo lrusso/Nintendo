@@ -1496,6 +1496,19 @@ var JoyStick = function JoyStick(t, e) {var i = void 0 === (e = e || {}).title ?
           }
         })
 
+        // the read itself failed (unreadable file, or an icloud file that
+        // never finished downloading). the load handler never runs, so
+        // release the input here instead of leaving it in the DOM until the
+        // next call. there is no ui to report the failure through.
+        reader.addEventListener("error", function () {
+          if (input.parentNode) {
+            input.parentNode.removeChild(input)
+          }
+          if (globals.window["NINTENDO_STATE_INPUT"] === input) {
+            globals.window["NINTENDO_STATE_INPUT"] = null
+          }
+        })
+
         reader.readAsArrayBuffer(file)
       })
 
