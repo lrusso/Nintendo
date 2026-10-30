@@ -112,12 +112,37 @@
         )
       }
 
+      function decodeUrlParameter(text) {
+        var spaced = text.replace(/\+/g, " ")
+
+        try {
+          return decodeURIComponent(spaced)
+        } catch (err) {
+          return spaced
+        }
+      }
+
+      function getUrlParameter(name) {
+        var pairs = window.location.search.substring(1).split("&")
+
+        for (var i = 0; i < pairs.length; i++) {
+          var separator = pairs[i].indexOf("=")
+          var key = separator === -1 ? pairs[i] : pairs[i].substring(0, separator)
+          var value = separator === -1 ? "" : pairs[i].substring(separator + 1)
+
+          if (decodeUrlParameter(key) === name) {
+            return decodeUrlParameter(value)
+          }
+        }
+
+        return null
+      }
+
       window.addEventListener("load", function () {
         if (window.top === window.self) {
           container.style.display = "block"
 
-          var currentURL = new URL(window.location.href).searchParams
-          var demoRequired = currentURL.has("demo")
+          var demoRequired = getUrlParameter("demo") !== null
 
           if (demoRequired) {
             demoLoader.style.display = "block"
