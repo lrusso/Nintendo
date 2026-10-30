@@ -193,7 +193,10 @@
             var isValid = false
 
             for (var i = 0; i < validExtensions.length; i++) {
-              if (fileExtension.endsWith(validExtensions[i])) {
+              if (
+                fileExtension.slice(-validExtensions[i].length) ===
+                validExtensions[i]
+              ) {
                 isValid = true
                 break
               }
