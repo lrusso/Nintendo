@@ -287,6 +287,42 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
       globals.window["NINTENDO_AUDIO_NEXT_TIME"] + buf.duration
   }
 
+  function encodeUTF8(text) {
+    // utf-8 bytes of a string, the same that TextEncoder gives (older browsers don't have it)
+    var bytes = []
+    for (var i = 0; i < text.length; i++) {
+      var code = text.charCodeAt(i)
+      if (code >= 0xd800 && code <= 0xdfff) {
+        var next = text.charCodeAt(i + 1)
+        if (code <= 0xdbff && next >= 0xdc00 && next <= 0xdfff) {
+          code = 0x10000 + ((code - 0xd800) << 10) + (next - 0xdc00)
+          i++
+        } else {
+          code = 0xfffd // unpaired surrogate
+        }
+      }
+      if (code < 0x80) {
+        bytes.push(code)
+      } else if (code < 0x800) {
+        bytes.push(0xc0 | (code >> 6), 0x80 | (code & 0x3f))
+      } else if (code < 0x10000) {
+        bytes.push(
+          0xe0 | (code >> 12),
+          0x80 | ((code >> 6) & 0x3f),
+          0x80 | (code & 0x3f)
+        )
+      } else {
+        bytes.push(
+          0xf0 | (code >> 18),
+          0x80 | ((code >> 12) & 0x3f),
+          0x80 | ((code >> 6) & 0x3f),
+          0x80 | (code & 0x3f)
+        )
+      }
+    }
+    return new Uint8Array(bytes)
+  }
+
   function registerCallbacks() {
     // environment: bool(unsigned cmd, void* data) -> iii
     globals.window["NINTENDO_CB_ENVIRONMENT"] = Module.addFunction(function (
@@ -315,7 +351,7 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
           var key = keyPtr ? Module.UTF8ToString(keyPtr) : ""
           var val = coreVariables[key]
           if (val !== undefined) {
-            var vBytes = new TextEncoder().encode(val + "\0")
+            var vBytes = encodeUTF8(val + "\0")
             var vPtr = Module._malloc(vBytes.length)
             Module.HEAPU8.set(vBytes, vPtr)
             Module.setValue(dataPtr + 4, vPtr, "*")
@@ -531,7 +567,7 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
     var gameInfoPtr = Module._malloc(16)
 
     // Allocate path string
-    var pathBytes = new TextEncoder().encode(vfsPath + "\0")
+    var pathBytes = encodeUTF8(vfsPath + "\0")
     var pathPtr = Module._malloc(pathBytes.length)
     Module.HEAPU8.set(pathBytes, pathPtr)
 
