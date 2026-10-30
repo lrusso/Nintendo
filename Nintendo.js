@@ -831,7 +831,7 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
       globals.window["NINTENDO_CANVAS_CONTEXT"] =
         globals.window["NINTENDO_CANVAS"].getContext("2d")
 
-      function resizeChildren() {
+      var resizeChildren = function () {
         var parent = document.getElementById(globals.window["NINTENDO_CONTAINER"])
         if (!parent) {
           return
@@ -883,7 +883,7 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
 
       var resizeTimeout
 
-      function onResizeEvent() {
+      var onResizeEvent = function () {
         // waiting 25 ms for the browser UI to be updated
         clearTimeout(resizeTimeout)
         resizeTimeout = setTimeout(function () {
@@ -1077,7 +1077,7 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
       }
 
       if (config.showMobileControls) {
-        function sendVirtualKey(keyState, keyValue) {
+        var sendVirtualKey = function (keyState, keyValue) {
           var oEvent = new KeyboardEvent(keyState, {
             bubbles: true,
             cancelable: false,
