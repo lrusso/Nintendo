@@ -1460,7 +1460,7 @@ var JoyStick=function(t,e){var i=void 0===(e=e||{}).title?"joystick":e.title,n=v
       return
     }
 
-    var data = new Uint8Array(Module.HEAPU8.buffer, bufPtr, size).slice()
+    var data = new Uint8Array(Module.HEAPU8.subarray(bufPtr, bufPtr + size))
     Module._free(bufPtr)
 
     var blob = new Blob([data], { type: "application/octet-stream" })
