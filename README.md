@@ -19,7 +19,7 @@ A Nintendo emulator with mobile compatibility designed for running in pure JavaS
 
 ## How to use it:
 
-Examples of loading local and online files can be found [here](https://github.com/lrusso/Nintendo/blob/main/Nintendo.htm#L137-L181) and [here](https://github.com/lrusso/Nintendo/blob/main/Nintendo.htm#L209-L248).
+Examples of loading local and online files can be found [here](https://github.com/lrusso/Nintendo/blob/main/Nintendo.htm#L162-L206) and [here](https://github.com/lrusso/Nintendo/blob/main/Nintendo.htm#L237-L276).
 
 ```js
 embedNintendo({
